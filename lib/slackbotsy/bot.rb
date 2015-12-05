@@ -3,6 +3,7 @@ require 'net/https'
 require 'uri'
 require 'json'
 require 'set'
+require 'rest-client'
 
 module Slackbotsy
 
@@ -52,9 +53,8 @@ module Slackbotsy
         channel:  @options['channel']
       }.merge(options)
       payload[:channel] = payload[:channel].gsub(/^#?/, '#') #slack api needs leading # on channel
-      request = Net::HTTP::Post.new(@uri.request_uri)
-      request.set_form_data(payload: payload.to_json)
-      @http.request(request)
+
+      RestClient.post @uri.request_uri, payload.to_json
       return nil # so as not to trigger text in outgoing webhook reply
     end
 
