@@ -78,7 +78,6 @@ module Slackbotsy
         as_user:  true
       }.merge(options)
       payload[:channel] = payload[:channel].gsub(/^#?/, '#') # chat.postMessage needs leading # on channel
-      @api.join(payload[:channel])
       @api.post_message(payload)
       return nil # be quiet in webhook reply
     end
