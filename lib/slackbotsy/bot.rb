@@ -131,7 +131,7 @@ module Slackbotsy
     end
 
     def handle_slash_command(msg)
-      return nil unless @options['slash_token'].include?(msg[:token])
+      return nil unless @options['outgoing_token'].include?(msg[:token])
 
       responses = get_responses(msg, "#{msg[:command]} #{msg[:text]}".strip)
 
