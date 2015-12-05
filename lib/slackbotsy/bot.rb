@@ -25,7 +25,7 @@ module Slackbotsy
         tokens.split(/[,\s]+/)
       when Array
         tokens
-      end.to_set
+      end
     end
 
     ## setup http connection for sending async incoming webhook messages to slack
